@@ -1,0 +1,394 @@
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY) /*application='Back'*/[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL) /*application='Back'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7864839756650184315', 0) /*application='Back'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC /*application='Back'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1 /*application='Back'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (2.3ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2025-12-16 01:13:38.187784', '2025-12-16 01:13:38.187786') /*application='Back'*/[0m
+Migrating to CreatePosts (20251216010819)
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE `posts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `body` text, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL) /*application='Back'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20251216010819') /*application='Back'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('7864839756650184315') /*application='Back'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC /*application='Back'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC /*application='Back'*/[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` /*application='Back'*/[0m
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (6.4ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Fuga velit illo.', 'Animi dolorem unde repellat optio.', '2025-12-16 01:13:42.508184', '2025-12-16 01:13:42.508184') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Voluptatibus distinctio asperiores.', 'Nobis facilis quia alias ut.', '2025-12-16 01:13:42.537466', '2025-12-16 01:13:42.537466') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Cupiditate aliquid est.', 'Omnis vero at earum quae.', '2025-12-16 01:13:42.545802', '2025-12-16 01:13:42.545802') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (1.0ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Et rerum consectetur.', 'Iusto hic quia et sunt.', '2025-12-16 01:13:42.561824', '2025-12-16 01:13:42.561824') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Vel illum ipsum.', 'Minima commodi quisquam provident adipisci.', '2025-12-16 01:13:42.571908', '2025-12-16 01:13:42.571908') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Neque quis amet.', 'Ea rem consequuntur laudantium aliquid.', '2025-12-16 01:13:42.579023', '2025-12-16 01:13:42.579023') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Nam nulla facilis.', 'Consequatur cum id placeat delectus.', '2025-12-16 01:13:42.584209', '2025-12-16 01:13:42.584209') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (4.7ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Dolor commodi aut.', 'Doloribus consequatur molestiae dolor nam.', '2025-12-16 01:13:42.590297', '2025-12-16 01:13:42.590297') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Ut corporis quod.', 'Nihil modi quis voluptate ut.', '2025-12-16 01:13:42.601522', '2025-12-16 01:13:42.601522') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (2.4ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Recusandae velit sint.', 'Omnis quisquam delectus aperiam praesentium.', '2025-12-16 01:13:42.604829', '2025-12-16 01:13:42.604829') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Voluptatem quos ut.', 'Necessitatibus doloribus esse quae mollitia.', '2025-12-16 01:13:42.611387', '2025-12-16 01:13:42.611387') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Eum quibusdam velit.', 'Facere soluta et cum quo.', '2025-12-16 01:13:42.614637', '2025-12-16 01:13:42.614637') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Aliquid nihil sed.', 'Explicabo repellat accusamus vel minima.', '2025-12-16 01:13:42.618012', '2025-12-16 01:13:42.618012') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Eos suscipit sit.', 'Vero numquam magni dolore quia.', '2025-12-16 01:13:42.621431', '2025-12-16 01:13:42.621431') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Pariatur consequatur minus.', 'Error delectus molestiae fuga eum.', '2025-12-16 01:13:42.626269', '2025-12-16 01:13:42.626269') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Cupiditate dolores omnis.', 'Repellat nobis consectetur voluptatem qui.', '2025-12-16 01:13:42.633780', '2025-12-16 01:13:42.633780') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Aut aspernatur fugiat.', 'Esse sit officiis facilis doloribus.', '2025-12-16 01:13:42.636483', '2025-12-16 01:13:42.636483') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Alias ratione nam.', 'Distinctio et labore vel voluptatem.', '2025-12-16 01:13:42.639320', '2025-12-16 01:13:42.639320') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Harum dolor animi.', 'Aut quis rem provident fugit.', '2025-12-16 01:13:42.642248', '2025-12-16 01:13:42.642248') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN /*application='Back'*/[0m
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO `posts` (`title`, `body`, `created_at`, `updated_at`) VALUES ('Dolore debitis deserunt.', 'Culpa autem vel quis velit.', '2025-12-16 01:13:42.644893', '2025-12-16 01:13:42.644893') /*application='Back'*/[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT /*application='Back'*/[0m
+  [1m[36mPost Load (17.9ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` /* loading for pp */ LIMIT 11 /*application='Back'*/[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` /* loading for pp */ LIMIT 11 /*application='Back'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-12-15 22:45:35 -0500
+  
+ActiveRecord::DatabaseConnectionError (There is an issue connecting to your database with your username/password, username: root.
+
+Please check your database configuration to ensure the username/password are valid.
+)
+Caused by: Mysql2::Error::ConnectionError (Access denied for user 'root'@'localhost' (using password: YES))
+
+Information for: ActiveRecord::DatabaseConnectionError (There is an issue connecting to your database with your username/password, username: root.
+
+Please check your database configuration to ensure the username/password are valid.
+):
+  
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:31:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter.new_client'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:145:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter#connect'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:154:in 'block in ActiveRecord::ConnectionAdapters::Mysql2Adapter#reconnect'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:151:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter#reconnect'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:669:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#reconnect!'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:668:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#reconnect!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:773:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#verify!'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:763:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#verify!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:781:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#connect!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:987:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#with_raw_connection'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:986:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#with_raw_connection'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:696:in 'ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter#quote_string'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/quoting.rb:76:in 'ActiveRecord::ConnectionAdapters::Quoting#quote'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql/schema_statements.rb:260:in 'ActiveRecord::ConnectionAdapters::MySQL::SchemaStatements#quoted_scope'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql/schema_statements.rb:242:in 'ActiveRecord::ConnectionAdapters::MySQL::SchemaStatements#data_source_sql'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/schema_statements.rb:60:in 'ActiveRecord::ConnectionAdapters::SchemaStatements#table_exists?'
+activerecord (8.0.4) lib/active_record/schema_migration.rb:55:in 'block in ActiveRecord::SchemaMigration#create_table'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in 'ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection'
+activerecord (8.0.4) lib/active_record/schema_migration.rb:54:in 'ActiveRecord::SchemaMigration#create_table'
+activerecord (8.0.4) lib/active_record/migration.rb:1430:in 'ActiveRecord::Migrator#initialize'
+activerecord (8.0.4) lib/active_record/migration.rb:1278:in 'Class#new'
+activerecord (8.0.4) lib/active_record/migration.rb:1278:in 'ActiveRecord::MigrationContext#open'
+activerecord (8.0.4) lib/active_record/migration.rb:762:in 'block (2 levels) in ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration/pending_migration_connection.rb:8:in 'ActiveRecord::PendingMigrationConnection.with_temporary_pool'
+activerecord (8.0.4) lib/active_record/migration.rb:761:in 'block in ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:760:in 'Array#each'
+activerecord (8.0.4) lib/active_record/migration.rb:760:in 'ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:739:in 'ActiveRecord::Migration.check_pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:659:in 'block (2 levels) in ActiveRecord::Migration::CheckPending#call'
+activesupport (8.0.4) lib/active_support/file_update_checker.rb:85:in 'ActiveSupport::FileUpdateChecker#execute'
+activerecord (8.0.4) lib/active_record/migration.rb:664:in 'block in ActiveRecord::Migration::CheckPending#call'
+activerecord (8.0.4) lib/active_record/migration.rb:656:in 'Thread::Mutex#synchronize'
+activerecord (8.0.4) lib/active_record/migration.rb:656:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.4) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.4) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.4) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.4) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.0.4) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: Mysql2::Error::ConnectionError (Access denied for user 'root'@'localhost' (using password: YES)):
+  
+mysql2 (0.5.7) lib/mysql2/client.rb:92:in 'Mysql2::Client#connect'
+mysql2 (0.5.7) lib/mysql2/client.rb:92:in 'Mysql2::Client#initialize'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:25:in 'Class#new'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:25:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter.new_client'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:145:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter#connect'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:154:in 'block in ActiveRecord::ConnectionAdapters::Mysql2Adapter#reconnect'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:151:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter#reconnect'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:669:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#reconnect!'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:668:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#reconnect!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:773:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#verify!'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:763:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#verify!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:781:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#connect!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:987:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#with_raw_connection'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:986:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#with_raw_connection'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:696:in 'ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter#quote_string'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/quoting.rb:76:in 'ActiveRecord::ConnectionAdapters::Quoting#quote'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql/schema_statements.rb:260:in 'ActiveRecord::ConnectionAdapters::MySQL::SchemaStatements#quoted_scope'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql/schema_statements.rb:242:in 'ActiveRecord::ConnectionAdapters::MySQL::SchemaStatements#data_source_sql'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/schema_statements.rb:60:in 'ActiveRecord::ConnectionAdapters::SchemaStatements#table_exists?'
+activerecord (8.0.4) lib/active_record/schema_migration.rb:55:in 'block in ActiveRecord::SchemaMigration#create_table'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in 'ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection'
+activerecord (8.0.4) lib/active_record/schema_migration.rb:54:in 'ActiveRecord::SchemaMigration#create_table'
+activerecord (8.0.4) lib/active_record/migration.rb:1430:in 'ActiveRecord::Migrator#initialize'
+activerecord (8.0.4) lib/active_record/migration.rb:1278:in 'Class#new'
+activerecord (8.0.4) lib/active_record/migration.rb:1278:in 'ActiveRecord::MigrationContext#open'
+activerecord (8.0.4) lib/active_record/migration.rb:762:in 'block (2 levels) in ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration/pending_migration_connection.rb:8:in 'ActiveRecord::PendingMigrationConnection.with_temporary_pool'
+activerecord (8.0.4) lib/active_record/migration.rb:761:in 'block in ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:760:in 'Array#each'
+activerecord (8.0.4) lib/active_record/migration.rb:760:in 'ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:739:in 'ActiveRecord::Migration.check_pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:659:in 'block (2 levels) in ActiveRecord::Migration::CheckPending#call'
+activesupport (8.0.4) lib/active_support/file_update_checker.rb:85:in 'ActiveSupport::FileUpdateChecker#execute'
+activerecord (8.0.4) lib/active_record/migration.rb:664:in 'block in ActiveRecord::Migration::CheckPending#call'
+activerecord (8.0.4) lib/active_record/migration.rb:656:in 'Thread::Mutex#synchronize'
+activerecord (8.0.4) lib/active_record/migration.rb:656:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.4) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.4) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.4) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.4) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.0.4) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-12-15 22:45:36 -0500
+  
+ActiveRecord::DatabaseConnectionError (There is an issue connecting to your database with your username/password, username: root.
+
+Please check your database configuration to ensure the username/password are valid.
+)
+Caused by: Mysql2::Error::ConnectionError (Access denied for user 'root'@'localhost' (using password: YES))
+
+Information for: ActiveRecord::DatabaseConnectionError (There is an issue connecting to your database with your username/password, username: root.
+
+Please check your database configuration to ensure the username/password are valid.
+):
+  
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:31:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter.new_client'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:145:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter#connect'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:154:in 'block in ActiveRecord::ConnectionAdapters::Mysql2Adapter#reconnect'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:151:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter#reconnect'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:669:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#reconnect!'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:668:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#reconnect!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:773:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#verify!'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:763:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#verify!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:781:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#connect!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:987:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#with_raw_connection'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:986:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#with_raw_connection'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:696:in 'ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter#quote_string'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/quoting.rb:76:in 'ActiveRecord::ConnectionAdapters::Quoting#quote'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql/schema_statements.rb:260:in 'ActiveRecord::ConnectionAdapters::MySQL::SchemaStatements#quoted_scope'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql/schema_statements.rb:242:in 'ActiveRecord::ConnectionAdapters::MySQL::SchemaStatements#data_source_sql'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/schema_statements.rb:60:in 'ActiveRecord::ConnectionAdapters::SchemaStatements#table_exists?'
+activerecord (8.0.4) lib/active_record/schema_migration.rb:55:in 'block in ActiveRecord::SchemaMigration#create_table'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in 'ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection'
+activerecord (8.0.4) lib/active_record/schema_migration.rb:54:in 'ActiveRecord::SchemaMigration#create_table'
+activerecord (8.0.4) lib/active_record/migration.rb:1430:in 'ActiveRecord::Migrator#initialize'
+activerecord (8.0.4) lib/active_record/migration.rb:1278:in 'Class#new'
+activerecord (8.0.4) lib/active_record/migration.rb:1278:in 'ActiveRecord::MigrationContext#open'
+activerecord (8.0.4) lib/active_record/migration.rb:762:in 'block (2 levels) in ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration/pending_migration_connection.rb:8:in 'ActiveRecord::PendingMigrationConnection.with_temporary_pool'
+activerecord (8.0.4) lib/active_record/migration.rb:761:in 'block in ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:760:in 'Array#each'
+activerecord (8.0.4) lib/active_record/migration.rb:760:in 'ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:739:in 'ActiveRecord::Migration.check_pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:659:in 'block (2 levels) in ActiveRecord::Migration::CheckPending#call'
+activesupport (8.0.4) lib/active_support/file_update_checker.rb:85:in 'ActiveSupport::FileUpdateChecker#execute'
+activerecord (8.0.4) lib/active_record/migration.rb:664:in 'block in ActiveRecord::Migration::CheckPending#call'
+activerecord (8.0.4) lib/active_record/migration.rb:656:in 'Thread::Mutex#synchronize'
+activerecord (8.0.4) lib/active_record/migration.rb:656:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.4) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.4) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.4) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.4) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.0.4) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: Mysql2::Error::ConnectionError (Access denied for user 'root'@'localhost' (using password: YES)):
+  
+mysql2 (0.5.7) lib/mysql2/client.rb:92:in 'Mysql2::Client#connect'
+mysql2 (0.5.7) lib/mysql2/client.rb:92:in 'Mysql2::Client#initialize'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:25:in 'Class#new'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:25:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter.new_client'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:145:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter#connect'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:154:in 'block in ActiveRecord::ConnectionAdapters::Mysql2Adapter#reconnect'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql2_adapter.rb:151:in 'ActiveRecord::ConnectionAdapters::Mysql2Adapter#reconnect'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:669:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#reconnect!'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:668:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#reconnect!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:773:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#verify!'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:763:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#verify!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:781:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#connect!'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:987:in 'block in ActiveRecord::ConnectionAdapters::AbstractAdapter#with_raw_connection'
+activesupport (8.0.4) lib/active_support/concurrency/null_lock.rb:9:in 'ActiveSupport::Concurrency::NullLock#synchronize'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_adapter.rb:986:in 'ActiveRecord::ConnectionAdapters::AbstractAdapter#with_raw_connection'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:696:in 'ActiveRecord::ConnectionAdapters::AbstractMysqlAdapter#quote_string'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/quoting.rb:76:in 'ActiveRecord::ConnectionAdapters::Quoting#quote'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql/schema_statements.rb:260:in 'ActiveRecord::ConnectionAdapters::MySQL::SchemaStatements#quoted_scope'
+activerecord (8.0.4) lib/active_record/connection_adapters/mysql/schema_statements.rb:242:in 'ActiveRecord::ConnectionAdapters::MySQL::SchemaStatements#data_source_sql'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/schema_statements.rb:60:in 'ActiveRecord::ConnectionAdapters::SchemaStatements#table_exists?'
+activerecord (8.0.4) lib/active_record/schema_migration.rb:55:in 'block in ActiveRecord::SchemaMigration#create_table'
+activerecord (8.0.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in 'ActiveRecord::ConnectionAdapters::ConnectionPool#with_connection'
+activerecord (8.0.4) lib/active_record/schema_migration.rb:54:in 'ActiveRecord::SchemaMigration#create_table'
+activerecord (8.0.4) lib/active_record/migration.rb:1430:in 'ActiveRecord::Migrator#initialize'
+activerecord (8.0.4) lib/active_record/migration.rb:1278:in 'Class#new'
+activerecord (8.0.4) lib/active_record/migration.rb:1278:in 'ActiveRecord::MigrationContext#open'
+activerecord (8.0.4) lib/active_record/migration.rb:762:in 'block (2 levels) in ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration/pending_migration_connection.rb:8:in 'ActiveRecord::PendingMigrationConnection.with_temporary_pool'
+activerecord (8.0.4) lib/active_record/migration.rb:761:in 'block in ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:760:in 'Array#each'
+activerecord (8.0.4) lib/active_record/migration.rb:760:in 'ActiveRecord::Migration.pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:739:in 'ActiveRecord::Migration.check_pending_migrations'
+activerecord (8.0.4) lib/active_record/migration.rb:659:in 'block (2 levels) in ActiveRecord::Migration::CheckPending#call'
+activesupport (8.0.4) lib/active_support/file_update_checker.rb:85:in 'ActiveSupport::FileUpdateChecker#execute'
+activerecord (8.0.4) lib/active_record/migration.rb:664:in 'block in ActiveRecord::Migration::CheckPending#call'
+activerecord (8.0.4) lib/active_record/migration.rb:656:in 'Thread::Mutex#synchronize'
+activerecord (8.0.4) lib/active_record/migration.rb:656:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.0.4) lib/active_support/callbacks.rb:100:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.0.4) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.0.4) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.0.4) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/remote_ip.rb:96:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.4) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/executor.rb:16:in 'ActionDispatch::Executor#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.4) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.0.4) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.0.4) lib/rails/engine.rb:535:in 'Rails::Engine#call'
+puma (7.1.0) lib/puma/configuration.rb:300:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (7.1.0) lib/puma/request.rb:101:in 'block in Puma::Request#handle_request'
+puma (7.1.0) lib/puma/thread_pool.rb:355:in 'Puma::ThreadPool#with_force_shutdown'
+puma (7.1.0) lib/puma/request.rb:100:in 'Puma::Request#handle_request'
+puma (7.1.0) lib/puma/server.rb:503:in 'Puma::Server#process_client'
+puma (7.1.0) lib/puma/server.rb:262:in 'block in Puma::Server#run'
+puma (7.1.0) lib/puma/thread_pool.rb:182:in 'block in Puma::ThreadPool#spawn_thread'
+[dotenv] Set [36mMYSQL_USERNAME[0m, [36mMYSQL_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/" for 127.0.0.1 at 2025-12-15 22:51:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC /*application='Back'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/mmazer/.local/share/gem/ruby/3.4.0/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/mmazer/.local/share/gem/ruby/3.4.0/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 138ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 27.9ms)
+
+
+Started GET "/icon.png" for 127.0.0.1 at 2025-12-15 22:51:13 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/icon.png"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-12-15 22:51:20 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+[dotenv] Set [36mMYSQL_USERNAME[0m, [36mMYSQL_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mPost Load (6.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` /* loading for pp */ LIMIT 11 /*application='Back'*/[0m
