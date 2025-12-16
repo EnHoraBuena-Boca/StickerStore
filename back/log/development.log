@@ -392,3 +392,15 @@ ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
 [dotenv] Set [36mMYSQL_USERNAME[0m, [36mMYSQL_PASSWORD[0m
 [dotenv] Loaded [33m.env[0m
   [1m[36mPost Load (6.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` /* loading for pp */ LIMIT 11 /*application='Back'*/[0m
+[dotenv] Set [36mMYSQL_USERNAME[0m, [36mMYSQL_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/" for 127.0.0.1 at 2025-12-15 22:57:56 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC /*application='Back'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/mmazer/.local/share/gem/ruby/3.4.0/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/mmazer/.local/share/gem/ruby/3.4.0/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 112ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 28.5ms)
+
+
+[dotenv] Set [36mMYSQL_USERNAME[0m, [36mMYSQL_PASSWORD[0m
+[dotenv] Loaded [33m../.env[0m
