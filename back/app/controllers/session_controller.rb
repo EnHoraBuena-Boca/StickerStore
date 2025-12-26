@@ -1,10 +1,13 @@
 class SessionsController < ApplicationController
+  before_action :require_login, only: [:update, :destroy]
+
   def create
-    if user = User.authenticate_by(email: params[:first_name], password: params[:password])
+    user = User.find_by(first_name: params[:first_name])
+    if user&.password == params[:password]
       # Save the user ID in the session so it can be used in
       # subsequent requests
-      session[:current_user_id] = user.id
-      redirect_to root_url
+      session[:current_user_id] = user.user_id
+      render json: {user_id: user.user_id}
     end
   end
 
@@ -12,7 +15,14 @@ class SessionsController < ApplicationController
     session.delete(:current_user_id)
     # Clear the current user as well.
     @current_user = nil
-    redirect_to root_url, status: :see_other
+    render json: { message: "Logged out" }
   end
+
+  def require_login
+    unless current_user
+      render json: { error: "Unauthorized" }, status: :unauthorized
+    end
+  end
+
 
 end
