@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_19_041200) do
-  create_table "original_cards", id: :integer, default: 0, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+ActiveRecord::Schema[8.0].define(version: 2025_12_23_214126) do
+  create_table "original_cards", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.integer "type", default: 0
+    t.integer "Cardtype", default: 0
     t.boolean "approved", default: false
+    t.string "api_id"
   end
 
-  create_table "users", primary_key: "user_id", id: :integer, default: 0, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "users", primary_key: "user_id", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "status", default: 0
     t.string "first_name"
     t.string "password"

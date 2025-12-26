@@ -1,4 +1,4 @@
-class Api::V1::UserController < ApplicationController
+class Api::V1::UsersController < ApplicationController
    before_action :set_user, only: %i[ show update destroy ]
 
   # GET /users
@@ -16,7 +16,7 @@ class Api::V1::UserController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
+    
     if @user.save
       render json: @user, status: :created, location: @user
     else
@@ -28,9 +28,18 @@ class Api::V1::UserController < ApplicationController
   def login
     user = User.find_by(first_name: params[:user][:first_name])
     if user&.password == params[:user][:password]
-      render json: { id: user.user_id, firstname: user.first_name }, status: :ok
+      session[:current_user_id] = user.id
+      render json: { id: user.user_id, firstname: user.first_name}, status: :ok
     else
       render json: { error: "Invalid credentials" }, status: :unauthorized
+    end
+  end
+
+  def me
+    if current_user
+      render json: { user_id: current_user.user_id, status: current_user.status }
+    else
+      render json: { user: nil }, status: :unauthorized
     end
   end
 
@@ -52,7 +61,7 @@ class Api::V1::UserController < ApplicationController
   private
 
     def current_user
-      @current_user ||= User.find_by(id: session[:current_user_id]) if session[:current_user_id]
+      @current_user ||= User.find_by(user_id: session[:current_user_id]) if session[:current_user_id]
     end
     # Only allow a list of trusted parameters through.
     def user_params

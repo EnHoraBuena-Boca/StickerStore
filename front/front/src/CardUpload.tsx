@@ -1,64 +1,182 @@
-import  { useState } from 'react';
-import { Cloudinary } from '@cloudinary/url-gen';
-import { AdvancedImage, responsive, placeholder } from '@cloudinary/react';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import type { SelectChangeEvent } from "@mui/material/Select";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
+import Alert from "@mui/material/Alert";
 
-import CloudinaryUploadWidget from './components/CloudinaryUploadWidget.tsx';
-import './css/Card_Upload.css';
-import type { CloudinaryUploadWidgetOptions } from 'cloudinary-core';
+import * as React from "react";
+import Table from "./components/Table.tsx";
+import { createCard } from "./components/UserApi";
+import { UnapprovedCards } from "./components/UserApi";
 
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
+interface Image {
+  id: number;
+  name: string;
+  Cardtype: string;
+  approved: string;
+}
 
+export default function BasicTextFields() {
+  const [type, setAge] = React.useState("");
+  const [rows, setRows] = React.useState<Image[]>([]);
+  const [resetFile, setResetFile] = React.useState(0);
+  const [cardName, setcardName] = React.useState("");
+  const [success, setSuccess] = React.useState(false);
+  const [semisuccess, setsemiSuccess] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
-export default function CardUpload() {
-  const cloudName = 'hzxyensd5';
-  const uploadPreset = 'aoh4fpwm';
-
-  // State
-  const [publicId, setPublicId] = useState('');
-
-  // Cloudinary configuration
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName,
-    },
-  });
-
-  // Upload Widget Configuration
-  const uwConfig: CloudinaryUploadWidgetOptions = {
-    cloudName,
-    uploadPreset,
-    // Uncomment and modify as needed:
-    // cropping: true,
-    // showAdvancedOptions: true,
-    // sources: ['local', 'url'],
-    // multiple: false,
-    // folder: 'user_images',
-    // tags: ['users', 'profile'],
-    // context: { alt: 'user_uploaded' },
-    // clientAllowedFormats: ['images'],
-    // maxImageFileSize: 2000000,
-    // maxImageWidth: 2000,
-    // theme: 'purple',
+  const addRow = (newImage: Image) => {
+    setRows((prev) => [...prev, newImage]);
   };
 
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const raw = new FormData(event.currentTarget);
+    createCard(raw)
+      .then((result: any) => {
+        if (result.approved) {
+          setSuccess(true);
+        } else {
+          addRow({
+            id: result.id,
+            name: result.name,
+            Cardtype: result.Cardtype,
+            approved: result.approved,
+          });
+          setsemiSuccess(true);
+        }
+      })
+      .catch(() => {
+        setError(true);
+      });
+
+    setAge("");
+    setcardName("");
+    setResetFile((reset) => reset + 1);
+  };
+ 
+  React.useEffect(() => {
+    UnapprovedCards().then((result: any) => {
+      setRows(result.all_cards);
+    });
+  }, []);
+ 
+  React.useEffect(() => {
+    if (!success) return;
+
+    const timer = setTimeout(() => {
+      setSuccess(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [success]);
+
+  React.useEffect(() => {
+    if (!semisuccess) return;
+
+    const timer = setTimeout(() => {
+      setsemiSuccess(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [semisuccess]);
+  React.useEffect(() => {
+    if (!error) return;
+
+    const timer = setTimeout(() => {
+      setError(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [error]);
+
   return (
-    <div className="App">
-      <h3>Upload Widget</h3>
-
-      <CloudinaryUploadWidget uwConfig={uwConfig} setPublicId={setPublicId} />
-
-      {publicId && (
-        <div
-          className="image-preview"
-          style={{ width: '800px', margin: '20px auto' }}
-        >
-          <AdvancedImage
-            style={{ maxWidth: '100%' }}
-            cldImg={cld.image(publicId)}
-            plugins={[responsive(), placeholder()]}
+    <>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: "grid",
+          gridTemplateRows: "auto auto",
+          gap: 2,
+          justifyContent: "center",
+          width: "100vw",
+        }}
+      >
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <TextField
+            autoFocus
+            required
+            margin="dense"
+            id="name"
+            name="CardName"
+            label="Card Name"
+            value={cardName}
+            fullWidth
+            onChange={(event) => setcardName(event.target.value)}
+            variant="standard"
           />
-        </div>
-      )}
-    </div>
-  )
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              name="type"
+              value={type}
+              label="Type"
+              onChange={handleChange}
+            >
+              <MenuItem value={"Common"}>Common</MenuItem>
+              <MenuItem value={"Uncommon"}>Uncommon</MenuItem>
+              <MenuItem value={"Rare"}>Rare</MenuItem>
+            </Select>
+          </FormControl>
+          <Button
+            component="label"
+            role={undefined}
+            variant="contained"
+            sx={{ justifySelf: "center", width: "50ch" }}
+          >
+            File
+            <VisuallyHiddenInput
+              key={resetFile}
+              type="file"
+              name="file"
+              multiple
+            />
+          </Button>
+        </Box>
+        <Button type="submit" sx={{ marginBottom: 10 }}>
+          Upload
+        </Button>
+        <Table rows={rows} />
+        {success && <Alert severity="success">Success!.</Alert>}
+        {semisuccess && (
+          <Alert severity="warning">Success but needs approval.</Alert>
+        )}
+        {error && <Alert severity="error">Server error, contact admin</Alert>}
+      </Box>
+    </>
+  );
 }
