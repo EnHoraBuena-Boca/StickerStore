@@ -16,16 +16,18 @@ class Api::V1::UserCardsController < ApplicationController
 
   def get_user_card_count 
     user_cards = UserCard.where(user_id: session[:current_user_id]).count
-    unless user_cards == 0
-      render json: user_cards
-    end
+    render json: user_cards
 
   end
 
   def cards_with_params
     puts default_per_page
     if params[:cardtype].empty?
-      @user_cards = UserCard.where(user_id: session[:current_user_id], card_name: params[:name])
+      @user_cards = UserCard.where(
+        "user_id = ? AND card_name LIKE ?", 
+        session[:current_user_id], 
+        "%#{params[:name]}%"
+      )
       @user_cards = @user_cards.then(&paginate)
 
       render json: @user_cards
