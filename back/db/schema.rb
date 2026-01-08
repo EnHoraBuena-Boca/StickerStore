@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_01_03_002231) do
+ActiveRecord::Schema[8.0].define(version: 2026_01_05_230709) do
   create_table "original_cards", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_03_002231) do
     t.integer "cardtype", default: 0
     t.boolean "approved", default: false
     t.string "api_id"
+    t.integer "season"
   end
 
   create_table "user_cards", primary_key: "uuid", id: { type: :binary, limit: 16 }, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|

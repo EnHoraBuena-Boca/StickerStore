@@ -1,7 +1,7 @@
 class UserCard < ApplicationRecord
   belongs_to :user
   attribute :uuid, MySQLBinUUID::Type.new
-  enum :cardtype, { Common: 0, Uncommon: 1, Rare: 2}
+  enum :cardtype, { Common: 0, Uncommon: 1, Rare: 2, Ultra_Rare: 3}
   before_create :set_uuid
   
   private

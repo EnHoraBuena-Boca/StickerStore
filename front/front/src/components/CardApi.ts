@@ -4,9 +4,7 @@ export async function createCard(raw: FormData) {
   const url = "http://localhost:3000/api/v1/original_cards";
 
   const formData = new FormData();
-  formData.append("name", raw.get("CardName") as string);
-  formData.append("Cardtype", raw.get("type") as string);
-  formData.append("image", raw.get("file") as File);
+  formData.append("zip", raw.get("file") as File);
 
   try {
     const response = await fetch(url, {
@@ -44,7 +42,7 @@ export async function UnapprovedCards() {
   }
 }
 
-export async function ApproveCards(ids: Set<GridRowId>) {
+export async function ApproveCards(ids: Set<GridRowId> | number[]) {
   const url = "http://localhost:3000/api/v1/approved";
 
   try {
@@ -59,6 +57,25 @@ export async function ApproveCards(ids: Set<GridRowId>) {
     }
     const result = await response.json();
     return result;
+  } catch (error) {
+    console.log("error, go fuck yourself", error);
+  }
+}
+
+export async function DeleteCards(ids: Set<GridRowId> | number[]) {
+  const url = "http://localhost:3000/api/v1/delete_cards";
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ids: Array.from(ids) }),
+    });
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    return response.status;
   } catch (error) {
     console.log("error, go fuck yourself", error);
   }
