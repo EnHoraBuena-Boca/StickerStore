@@ -85,6 +85,7 @@ export default function FixedBottomNavigation() {
   }
   async function getCardCount() {
     const result = await getUserCardCount();
+    console.log(result);
     setcardCount(result);
   }
   React.useEffect(() => {

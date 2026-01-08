@@ -1,10 +1,4 @@
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import type { SelectChangeEvent } from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Alert from "@mui/material/Alert";
@@ -13,6 +7,14 @@ import * as React from "react";
 import Table from "./components/Table.tsx";
 import { createCard } from "./components/CardApi.ts";
 import { UnapprovedCards } from "./components/CardApi.ts";
+
+const Div = styled("div")(({ theme }) => ({
+  ...theme.typography.button,
+  backgroundColor: (theme.vars || theme).palette.background.paper,
+  padding: theme.spacing(1),
+  textTransform: "lowercase",
+  textAlign: "center"
+}));
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -34,10 +36,8 @@ interface Image {
 }
 
 export default function BasicTextFields() {
-  const [type, setAge] = React.useState("");
   const [rows, setRows] = React.useState<Image[]>([]);
   const [resetFile, setResetFile] = React.useState(0);
-  const [cardName, setcardName] = React.useState("");
   const [success, setSuccess] = React.useState(false);
   const [semisuccess, setsemiSuccess] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -46,42 +46,44 @@ export default function BasicTextFields() {
     setRows((prev) => [...prev, newImage]);
   };
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const raw = new FormData(event.currentTarget);
-    createCard(raw)
-      .then((result: any) => {
-        if (result.approved) {
-          setSuccess(true);
-        } else {
-          addRow({
-            id: result.id,
-            name: result.name,
-            cardtype: result.cardtype,
-            approved: result.approved,
-          });
-          setsemiSuccess(true);
-        }
-      })
-      .catch(() => {
-        setError(true);
-      });
 
-    setAge("");
-    setcardName("");
-    setResetFile((reset) => reset + 1);
+    if ((event.target as HTMLFormElement).file.value.endsWith(".zip")) {
+      const raw = new FormData(event.currentTarget);
+
+      createCard(raw)
+        .then((result: any) => {
+          for (let file of result) {
+            if (file.approved) {
+              setSuccess(true);
+            } else {
+              addRow({
+                id: file.id,
+                name: file.name,
+                cardtype: file.cardtype,
+                approved: file.approved,
+              });
+              setsemiSuccess(true);
+            }
+          }
+        })
+        .catch(() => {
+          setError(true);
+        });
+
+      setResetFile((reset) => reset + 1);
+    } else {
+      setError(true);
+    }
   };
- 
+
   React.useEffect(() => {
     UnapprovedCards().then((result: any) => {
       setRows(result.all_cards);
     });
   }, []);
- 
+
   React.useEffect(() => {
     if (!success) return;
 
@@ -124,49 +126,21 @@ export default function BasicTextFields() {
           width: "100vw",
         }}
       >
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            id="name"
-            name="CardName"
-            label="Card Name"
-            value={cardName}
-            fullWidth
-            onChange={(event) => setcardName(event.target.value)}
-            variant="standard"
+        <Div>{"Submit a zip file, all images must be first_last-type-season.png"}</Div>
+        <Button
+          component="label"
+          role={undefined}
+          variant="contained"
+          sx={{ alignSelf: "center", justifySelf: "center", width: "70ch" }}
+        >
+          File
+          <VisuallyHiddenInput
+            key={resetFile}
+            type="file"
+            name="file"
+            accept=".zip,application/zip"
           />
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Type</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              name="type"
-              value={type}
-              label="Type"
-              onChange={handleChange}
-            >
-              <MenuItem value={"Common"}>Common</MenuItem>
-              <MenuItem value={"Uncommon"}>Uncommon</MenuItem>
-              <MenuItem value={"Rare"}>Rare</MenuItem>
-            </Select>
-          </FormControl>
-          <Button
-            component="label"
-            role={undefined}
-            variant="contained"
-            sx={{ justifySelf: "center", width: "50ch" }}
-          >
-            File
-            <VisuallyHiddenInput
-              key={resetFile}
-              type="file"
-              name="file"
-              multiple
-            />
-          </Button>
-        </Box>
+        </Button>
         <Button type="submit" sx={{ marginBottom: 10 }}>
           Upload
         </Button>
@@ -175,7 +149,11 @@ export default function BasicTextFields() {
         {semisuccess && (
           <Alert severity="warning">Success but needs approval.</Alert>
         )}
-        {error && <Alert severity="error">Server error, contact admin</Alert>}
+        {error && (
+          <Alert severity="error">
+            Error, wrong input file or server error
+          </Alert>
+        )}
       </Box>
     </>
   );
