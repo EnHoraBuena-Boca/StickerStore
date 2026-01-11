@@ -18,7 +18,7 @@ export async function PackCards() {
   }
 }
 
-export async function CommitCards(ids: string[]) {
+export async function CommitCards(id1s: string[]) {
   const url = "http://localhost:3000/api/v1/commit_to_users_folder";
 
   try {
